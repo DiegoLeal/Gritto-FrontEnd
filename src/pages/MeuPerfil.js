@@ -85,10 +85,12 @@ export default function Formulario() {
               <Grid item md={4}>
                 <TextField
                   label="Nome "
+                  name={'name'}
                   placeholder="Nome completo"
                   margin="dense"
                   size="medium"
                   style={{ width: '13rem' }}
+                  onChange={handleChange}
                 />
               </Grid>
               <Grid item md={4}>
@@ -104,7 +106,10 @@ export default function Formulario() {
                 <Cpf /> {/*Chamando CPF*/}
               </Grid>
               <Grid item md={4}>
-                <BasicDatePicker /> {/*Chamando BasicDatePicker*/}
+                <BasicDatePicker
+                  name={'dataNascimento'} 
+                  onDateChange={handleChange}
+                /> {/*Chamando BasicDatePicker*/}
               </Grid>
               <Grid item md={4}>
                 <TextField

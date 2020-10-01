@@ -6,10 +6,11 @@ import {
   KeyboardDatePicker,
 }  from '@material-ui/pickers';
 
-function BasicDatePicker() {
+function BasicDatePicker(props) {
   const [selectedDate, setSelectedDate] = React.useState(new Date());
     const handleDateChange = (date) => {
       setSelectedDate(date);
+      props.onDateChange(date)
     };
 
   return (
@@ -17,6 +18,7 @@ function BasicDatePicker() {
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid item md={4}>
           <KeyboardDatePicker
+            name={props.name}
             disableToolbar
             openTo="year"
             format="dd/MM/yyyy"
