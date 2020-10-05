@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import api from '../utils/api';
+import axios from 'axios';
 import '../style/MeuPerfil.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,39 +32,74 @@ export default function Formulario() {
     const classes = useStyles();
     const [state, setState] = useState({
         age: '',
-        name: 'age', 
-        endereco: [{
-            cep: '',
-            rua: 0,
-            bairro: 0,
-            cidade: 0,
-            uf: 0,
-        }]        
+        name: 'age',         
     });    
-
+    const [post, setPost] = useState({
+        bairro_id: '',
+        cidade_id: '',
+        rua_id: '',
+        cep: ''
+    })
     const handleChange = (event) => {
         const name = event.target.name;
         setState({
         ...state,
         [name]: event.target.value,
         });
+        setPost({
+            ...post,
+            [name]: event.target.value
+        });
     };
 
-    const[enderecos, setEnderecos] = useState([]);
-    useEffect(() => {
-        api.get('endereco')
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        apiPostRequest();
+    }
+
+    const[ruas, setRuas] = useState([]);
+    const[bairros, setBairros] = useState([]);
+    const[cidades, setCidades] = useState([]);
+    const[ufs, setUfs] = useState([]);
+
+    const apiGetRequest = () => {
+        const getRua = api.get('rua');
+        const getBairro = api.get('bairro');
+        const getCidade = api.get('cidade');
+        const getUf = api.get('uf');
+
+        axios.all([getRua, getBairro, getCidade, getUf])
+        .then(
+            axios.spread((...allData) => {
+                setRuas(allData[0].data);
+                setBairros(allData[1].data);
+                setCidades(allData[2].data);
+                setUfs(allData[3].data);
+            })
+        )
+    }
+
+    const apiPostRequest = () => {
+        api.post('endereco', post)
             .then(function (response) {
-                setEnderecos(response.data)
+                console.log("Post Request")
+                console.log(response);
             })
             .catch(function (error) {
-                console.log(error)
+                console.log(error);
             })
-    });
+            
+    }
+
+    useEffect(() => {
+         apiGetRequest();
+    }, []);
     
     return (
         <>
             <Navbar2 />
             <CssBaseline />
+            <form onSubmit={handleSubmit}>
             <Container maxWidth="xl" style={{backgroundImage:  `url(${Image})`, backgroundRepeat: 'no-repeat'}}>
                 <Container maxWidth="md" style={{ background:'#fafafa', maxWidth:"60%"}}>
                     <Typography variant="h4" style={{ color:"black", textAlign:"start", marginLeft:"-2rem", textTransform:"uppercase", marginBottom: "1rem", paddingTop: "4rem"}}>Dados Pessoais</Typography>
@@ -164,18 +200,27 @@ export default function Formulario() {
                                     margin="dense"
                                     size="medium"
                                     style={{ width: "9rem" }}
+                                    onChange={handleChange}
+                                    name="cep"
                                />
                             </Grid >
                             <Grid item md={4}></Grid>                        
                             <Grid item md={4}></Grid>                       
                             <Grid item md={6}>
-                                <TextField
-                                    label="Endereço "
-                                    placeholder="Endereço"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "20rem" }}
-                                />
+                                <FormControl>
+                                    <InputLabel>Endereço</InputLabel>
+                                    <NativeSelect
+                                        size="medium"                                  
+                                        style={{ width: "13rem" }}
+                                        onChangeCapture={handleChange}
+                                        name="rua_id"
+                                    >
+                                        <option aria-label="None" value="" />
+                                        {ruas.map(rua => (
+                                            <option key={rua.id} value={rua.id}>{rua.nome}</option>
+                                        ))}
+                                    </NativeSelect>
+                                </FormControl>
                             </Grid>
                             <Grid item md={3}>
                                 <TextField
@@ -197,31 +242,50 @@ export default function Formulario() {
                                 />
                             </Grid>
                             <Grid item md={4}>
-                                <TextField
-                                    label="Bairro "
-                                    placeholder="Bairro"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "13rem" }}
-                                />
+                                <FormControl>
+                                    <InputLabel>Bairro</InputLabel>
+                                    <NativeSelect
+                                        size="medium"                                  
+                                        style={{ width: "13rem" }}
+                                        onChangeCapture={handleChange}
+                                        name="bairro_id"
+                                    >
+                                        <option aria-label="None" value="" />
+                                        {bairros.map(bairro => (
+                                            <option key={bairro.id} value={bairro.id}>{bairro.nome}</option>
+                                        ))}
+                                    </NativeSelect>
+                                </FormControl>
                             </Grid>
                             <Grid item md={4}>
-                                <TextField
-                                    label="Cidade"
-                                    placeholder="Cidade"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "13rem" }}
-                                />
+                                <FormControl>
+                                    <InputLabel>Cidade</InputLabel>
+                                    <NativeSelect
+                                        size="medium"                                  
+                                        style={{ width: "13rem" }}
+                                        onChangeCapture={handleChange}
+                                        name="cidade_id"
+                                    >
+                                        <option aria-label="None" value="" />
+                                        {cidades.map(cidade => (
+                                            <option key={cidade.id} value={cidade.id}>{cidade.nome}</option>
+                                        ))}
+                                    </NativeSelect>
+                                </FormControl>
                             </Grid>
                             <Grid item md={4}>
-                                <TextField
-                                    label="Estado"
-                                    placeholder="Estado"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "13rem" }}
-                                />
+                                <FormControl>
+                                    <InputLabel>Estado</InputLabel>
+                                    <NativeSelect
+                                        size="medium"                                  
+                                        style={{ width: "13rem" }}
+                                    >
+                                        <option aria-label="None" value="" />
+                                        {ufs.map(uf => (
+                                            <option value={uf.id}>{uf.nome}</option>
+                                        ))}
+                                    </NativeSelect>
+                                </FormControl>
                             </Grid>
                             <Grid item md={4}>
                                 <TextField
@@ -245,7 +309,7 @@ export default function Formulario() {
                             </Grid>
                             <Grid item md={4}></Grid>                        
                             <Grid item md={4}>
-                            <Button variant="contained" color="inherit" size="large">ENVIAR</Button>{' '} 
+                            <Button type="submit" variant="contained" color="inherit" size="large">ENVIAR</Button>{' '} 
                                 </Grid>                        
                             <Grid item md={4}></Grid>                        
                             <Grid item md={4}></Grid>                       
@@ -257,6 +321,7 @@ export default function Formulario() {
                     </div>                      
                 </Container>             
             </Container>
+            </form>
             <Footer />
         </>
     );
