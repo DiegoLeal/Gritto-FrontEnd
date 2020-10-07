@@ -30,30 +30,27 @@ selectEmpty: {
 
 export default function Formulario() {  
     const classes = useStyles();
-    const [state, setState] = useState({
-        age: '',
-        name: 'age',         
-    });
-    const [postUsuario, setPostUsuario] = useContext(UsuarioContext)
-    const [post, setPost] = useState({
-        //bairro_id: '',
-        //cidade_id: '',
-        //rua_id: '',
-        //cep: '',
-    })
+
+    const [postUsuario, setPostUsuario] = useContext(UsuarioContext);
+    const [post, setPost] = useState('');
     
     const handleChange = (event) => {
+        event.preventDefault();
         const name = event.target.name;
-        setState({
-        ...state,
-        [name]: event.target.value,
-        });
         setPostUsuario({
             ...postUsuario,
             [name]: event.target.value
-        })
-       
+        });
     };
+
+    const handleEnderecoChange = (event) => {
+        event.preventDefault();
+        const name = event.target.name
+        setPost({
+            ...post,
+            [name]: event.target.value
+        });
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -83,7 +80,7 @@ export default function Formulario() {
     }
 
     const apiPostRequest = () => {
-        api.post('usuario', post)
+        api.post('usuario', postUsuario)
             .then(function (response) {
                 console.log("Post Request")
                 console.log(response);
@@ -132,23 +129,13 @@ export default function Formulario() {
                                 />
                             </Grid >
                             <Grid item sm={4}>
-                                <Cpf name='cpf'/>
+                                <Cpf />
                             </Grid >
                             <Grid item md={4}>
                                 <BasicDatePicker />
                             </Grid >
                             <Grid item md={4}>
-                                <TextField
-                                    label="Telefone"
-                                    placeholder="(45) 3333-3333"                               
-                                    size="medium"
-                                    name="telefone"
-                                    onChange={handleChange}
-                                    style={{ width: "13rem" }}                               
-                                 />
-                            </Grid>
-                            <Grid item md={4}>
-                                <TextField
+                            <TextField
                                     label="Celular"
                                     placeholder="(45) 99999-9999"                               
                                     size="medium"
@@ -157,35 +144,13 @@ export default function Formulario() {
                                     onChange={handleChange}                                 
                                     type="phone" 
                                 />
-                            </Grid>
-                            <Grid item md={4}>
-                                <FormControl>
-                                    <InputLabel>Estado Civil</InputLabel>
-                                    <NativeSelect
-                                        size="medium"                                  
-                                        style={{ width: "13rem" }}
-                                        value={state.age}
-                                        onChange={handleChange}
-                                        inputProps={{
-                                            name: 'age',
-                                            id: 'age-native-helper',
-                                        }}
-                                    >
-                                        <option aria-label="None" value="" />
-                                        <option value={10}>Solteiro(a)</option>
-                                        <option value={20}>Casado(a)</option>
-                                        <option value={30}>Divorciado</option>
-                                        <option value={40}>Separado(a)</option>
-                                        <option value={50}>Viuvo(a)</option>
-                                    </NativeSelect>
-                                </FormControl>
-                            </Grid>                       
+                            </Grid>                     
                             <Grid item md={4}>
                                 <FormControl>
                                     <InputLabel>Sexo</InputLabel>
                                     <NativeSelect                               
                                     size="medium"                                  
-                                    style={{ width: "13rem" }}
+                                    style={{ width: "13rem", marginTop: '16px' }}
                                     name="sexo"
                                     onChange={handleChange}
                                     inputProps={{
@@ -198,7 +163,39 @@ export default function Formulario() {
                                     <option value="F">F</option>                               
                                     </NativeSelect>               
                                 </FormControl>
-                            </Grid >                                         
+                            </Grid >
+                            <Grid item md={4}>
+                                <TextField
+                                    label="Senha"                              
+                                    size="medium"
+                                    style={{ width: "13rem", marginTop: '5px' }}
+                                    name="senha"  
+                                    onChange={handleChange}                                 
+                                    type="password" 
+                                />
+                            </Grid> 
+                            <Grid item md={4}>
+                                <TextField
+                                    label="E-mail"
+                                    placeholder="E-mail"
+                                    type="email"
+                                    name="email"
+                                    margin="dense"
+                                    size="medium"
+                                    style={{ width: "13rem" }}
+                                    onChange={handleChange}
+                                />
+                            </Grid>
+                            <Grid item md={4}>
+                                <TextField
+                                    label="Confirmar e-mail"
+                                    placeholder="Confirmar e-mail"
+                                    type="email"
+                                    margin="dense"
+                                    size="medium"
+                                    style={{ width: "13rem" }}
+                                />
+                            </Grid>                                         
                         </Grid >              
                     </div>
                     <Grid item md={4}>
@@ -213,7 +210,7 @@ export default function Formulario() {
                                     margin="dense"
                                     size="medium"
                                     style={{ width: "9rem" }}
-                                    onChange={handleChange}
+                                    onChange={handleEnderecoChange}
                                     name="cep"
                                />
                             </Grid >
@@ -224,8 +221,8 @@ export default function Formulario() {
                                     <InputLabel>Endereço</InputLabel>
                                     <NativeSelect
                                         size="medium"                                  
-                                        style={{ width: "13rem" }}
-                                        onChangeCapture={handleChange}
+                                        style={{ width: "18rem" }}
+                                        onChangeCapture={handleEnderecoChange}
                                         name="rua_id"
                                     >
                                         <option aria-label="None" value="" />
@@ -260,7 +257,7 @@ export default function Formulario() {
                                     <NativeSelect
                                         size="medium"                                  
                                         style={{ width: "13rem" }}
-                                        onChangeCapture={handleChange}
+                                        onChangeCapture={handleEnderecoChange}
                                         name="bairro_id"
                                     >
                                         <option aria-label="None" value="" />
@@ -276,7 +273,7 @@ export default function Formulario() {
                                     <NativeSelect
                                         size="medium"                                  
                                         style={{ width: "13rem" }}
-                                        onChangeCapture={handleChange}
+                                        onChangeCapture={handleEnderecoChange}
                                         name="cidade_id"
                                     >
                                         <option aria-label="None" value="" />
@@ -292,35 +289,16 @@ export default function Formulario() {
                                     <NativeSelect
                                         size="medium"                                  
                                         style={{ width: "13rem" }}
+                                        onChangeCapture={handleEnderecoChange}
+                                        name="uf_id"
                                     >
                                         <option aria-label="None" value="" />
                                         {ufs.map(uf => (
-                                            <option value={uf.id}>{uf.nome}</option>
+                                            <option key={uf.id} value={uf.id}>{uf.nome}</option>
                                         ))}
                                     </NativeSelect>
                                 </FormControl>
-                            </Grid>
-                            <Grid item md={4}>
-                                <TextField
-                                    label="E-mail"
-                                    placeholder="E-mail"
-                                    type="email"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "13rem" }}
-                                />
-                            </Grid>
-                            <Grid item md={4}>
-                                <TextField
-                                    label="Confirmar e-mil"
-                                    placeholder="Confirmar e-mil"
-                                    type="email"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "13rem" }}
-                                />
-                            </Grid>
-                            <Grid item md={4}></Grid>                        
+                            </Grid>                       
                             <Grid item md={4}>
                             <Button type="submit" variant="contained" color="inherit" size="large">ENVIAR</Button>{' '} 
                                 </Grid>                        

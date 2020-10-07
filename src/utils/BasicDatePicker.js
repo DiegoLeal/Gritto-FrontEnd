@@ -10,12 +10,12 @@ import {UsuarioContext} from '../context/UsuarioContext';
 function BasicDatePicker() { 
     const [postUsuario, setPostUsuario] = useContext(UsuarioContext);
     const handleDateChange = (date) => {
-      const d = new Intl.DateTimeFormat("pt-BR", {
+      const d = new Intl.DateTimeFormat("ca-ES", {
         year: "numeric",
-        month: "numeric",
-        day: "numeric"
+        month: "2-digit",
+        day: "2-digit"
       }).format(date);
-      setPostUsuario({dataNascimento: d});
+      setPostUsuario({...postUsuario, dataNascimento: d});
     };
 
   return (
@@ -27,11 +27,10 @@ function BasicDatePicker() {
             autoOk
             clearable
             value={postUsuario.dataNascimento}
-            onChange={date => handleDateChange(date)}
-            nimDate={new Date()}
+            onChange={date => handleDateChange()}
             format="dd/MM/yyyy"
             inputVariant="standard"
-            style={{width: '13rem'}}
+            style={{width: '13rem', marginTop: '15px'}}
 
             /*disableToolbar
             format="dd/MM/yyyy"
