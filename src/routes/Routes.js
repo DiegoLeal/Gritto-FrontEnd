@@ -8,9 +8,10 @@ import Historicos from '../pages/Historicos';
 import Agenda from '../pages/Agenda';
 import PageNotFound from '../pages/PageNotFound';
 import Cadastro from '../pages/Cadastro';
-
+import {UsuarioProvider} from '../context/UsuarioContext'
 
 export default () => (
+    <UsuarioProvider>
     <Router>  
         <CssBaseline />
         <Switch>               
@@ -21,6 +22,7 @@ export default () => (
             <Route path="/cadastro" component={Cadastro}/>         
             <Route path="*" component={PageNotFound} />
         </Switch>  
-    </Router>                                            
+    </Router> 
+    </UsuarioProvider>                                         
 );
 

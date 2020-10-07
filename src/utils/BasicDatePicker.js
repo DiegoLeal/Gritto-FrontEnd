@@ -1,37 +1,54 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import { Grid } from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,    
   KeyboardDatePicker,
 }  from '@material-ui/pickers';
+import {UsuarioContext} from '../context/UsuarioContext';
 
-function BasicDatePicker() {
-  const [selectedDate, setSelectedDate] = React.useState(new Date());
+function BasicDatePicker() { 
+    const [postUsuario, setPostUsuario] = useContext(UsuarioContext);
     const handleDateChange = (date) => {
-      setSelectedDate(date);
+      const d = new Intl.DateTimeFormat("pt-BR", {
+        year: "numeric",
+        month: "numeric",
+        day: "numeric"
+      }).format(date);
+      setPostUsuario({dataNascimento: d});
     };
 
   return (
+    
     <>
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid item md={4}>
           <KeyboardDatePicker
-            disableToolbar
+            autoOk
+            clearable
+            value={postUsuario.dataNascimento}
+            onChange={date => handleDateChange(date)}
+            nimDate={new Date()}
+            format="dd/MM/yyyy"
+            inputVariant="standard"
+            style={{width: '13rem'}}
+
+            /*disableToolbar
             format="dd/MM/yyyy"
             label="Data de nascimento" 
             variant="inline"                                                   
             views={["year", "month", "date"]}
-            value={selectedDate}
             onChange={handleDateChange}
+            value={postUsuario.dataNascimento}
             KeyboardButtonProps={{
               'aria-label': 'change date',
           }}
-            style={{ width: "13rem" }}
+            style={{ width: "13rem" }}*/
           />
         </Grid>
-      </MuiPickersUtilsProvider>      
+      </MuiPickersUtilsProvider>    
     </>
+    
   );
 }
 

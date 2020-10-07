@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import api from '../utils/api';
 import axios from 'axios';
 import '../style/MeuPerfil.css';
@@ -10,6 +10,7 @@ import Image from '../img/interior.jpg';
 import Cpf from '../utils/Cpf';
 import BasicDatePicker from '../utils/BasicDatePicker';
 import Footer from '../components/Footer';
+import { UsuarioContext } from '../context/UsuarioContext';
 
 const useStyles = makeStyles((theme) => ({     
   form: {                        
@@ -26,30 +27,32 @@ selectEmpty: {
   },
   
 }));
- 
 
 export default function Formulario() {  
     const classes = useStyles();
     const [state, setState] = useState({
         age: '',
         name: 'age',         
-    });    
+    });
+    const [postUsuario, setPostUsuario] = useContext(UsuarioContext)
     const [post, setPost] = useState({
-        bairro_id: '',
-        cidade_id: '',
-        rua_id: '',
-        cep: ''
+        //bairro_id: '',
+        //cidade_id: '',
+        //rua_id: '',
+        //cep: '',
     })
+    
     const handleChange = (event) => {
         const name = event.target.name;
         setState({
         ...state,
         [name]: event.target.value,
         });
-        setPost({
-            ...post,
+        setPostUsuario({
+            ...postUsuario,
             [name]: event.target.value
-        });
+        })
+       
     };
 
     const handleSubmit = (event) => {
@@ -80,7 +83,7 @@ export default function Formulario() {
     }
 
     const apiPostRequest = () => {
-        api.post('endereco', post)
+        api.post('usuario', post)
             .then(function (response) {
                 console.log("Post Request")
                 console.log(response);
@@ -96,6 +99,7 @@ export default function Formulario() {
     }, []);
     
     return (
+        
         <>
             <Navbar2 />
             <CssBaseline />
@@ -111,6 +115,8 @@ export default function Formulario() {
                                     placeholder="Nome completo"
                                     margin="dense"
                                     size="medium"
+                                    name="nome"
+                                    onChange={handleChange}
                                     style={{ width: "13rem" }}
                                 />
                             </Grid >
@@ -120,11 +126,13 @@ export default function Formulario() {
                                     placeholder="RG"
                                     margin="dense"
                                     size="medium"
+                                    name="rg"
+                                    onChange={handleChange}
                                     style={{ width: "13rem" }}
                                 />
                             </Grid >
                             <Grid item sm={4}>
-                                <Cpf />
+                                <Cpf name='cpf'/>
                             </Grid >
                             <Grid item md={4}>
                                 <BasicDatePicker />
@@ -134,6 +142,8 @@ export default function Formulario() {
                                     label="Telefone"
                                     placeholder="(45) 3333-3333"                               
                                     size="medium"
+                                    name="telefone"
+                                    onChange={handleChange}
                                     style={{ width: "13rem" }}                               
                                  />
                             </Grid>
@@ -143,7 +153,8 @@ export default function Formulario() {
                                     placeholder="(45) 99999-9999"                               
                                     size="medium"
                                     style={{ width: "13rem" }}
-                                    name="phone"                                   
+                                    name="telefone"  
+                                    onChange={handleChange}                                 
                                     type="phone" 
                                 />
                             </Grid>
@@ -175,14 +186,16 @@ export default function Formulario() {
                                     <NativeSelect                               
                                     size="medium"                                  
                                     style={{ width: "13rem" }}
+                                    name="sexo"
+                                    onChange={handleChange}
                                     inputProps={{
-                                        name: 'name',
+                                        name: 'sexo',
                                         id: 'uncontrolled-native',
                                     }}
                                     >
                                     <option aria-label="None" value="" />
-                                    <option value={10}>Masculino</option>
-                                    <option value={20}>Feminino</option>                               
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>                               
                                     </NativeSelect>               
                                 </FormControl>
                             </Grid >                                         
@@ -324,6 +337,7 @@ export default function Formulario() {
             </form>
             <Footer />
         </>
+        
     );
     
 }
