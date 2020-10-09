@@ -11,11 +11,11 @@ import {
   FormControl,
   Button,
 } from '@material-ui/core';
-import Navbar2 from '../components/Navbar2';
-import Image from '../img/interior.jpg';
-import Cpf from '../utils/Cpf';
-import BasicDatePicker from '../utils/BasicDatePicker';
-import Footer from '../components/Footer';
+import Navbar2 from 'components/Navbar2';
+import Image from 'img/interior.jpg';
+import Cpf from 'utils/Cpf';
+import BasicDatePicker from 'utils/BasicDatePicker';
+import Footer from 'components/Footer';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -73,8 +73,6 @@ export default function Formulario() {
 
   return (
     <>
-      <Navbar2 />
-      <CssBaseline />
       <Container className={classes.conteriner1}>
         <Container maxWidth="md" className={classes.conteriner2}>
           <Typography variant="h4" className={classes.typography}>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography, Box, Container } from "@material-ui/core";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 
 const useStyles = makeStyles ({
     Pagina: {
@@ -22,7 +22,6 @@ const Historicos = () => {
     const classes = useStyles();
     return (
         <>
-            <Navbar />       
             <Container className={classes.Container}>
                 <Box className={classes.Pagina}  >            
                     <Typography className={classes.Page}>
