@@ -8,22 +8,25 @@ import Agenda from 'pages/Agenda';
 import PageNotFound from 'pages/PageNotFound';
 import { ThemeProvider } from '@material-ui/core';
 import Navbar from 'components/Navbar';
+import { UsuarioProvider } from 'context/UsuarioContext';
 
 export default () => (
+  <UsuarioProvider>
     <ThemeProvider>
-        <Router>  
-            <Navbar />
-            <CssBaseline />
-            <Switch>               
-                <Route path="/" exact component={PaginaInicial} />            
-                <Route path="/meuperfil" component={MeuPerfil} />                                   
-                <Route path="/historicos" component={Historicos} />                                   
-                <Route path="/agenda" component={Agenda} />   
-                        
-                <Route path="*" component={PageNotFound} />
-            </Switch>  
-        </Router>   
+      <Router>  
+        <Navbar />
+        <CssBaseline />
+        <Switch>               
+          <Route path="/" exact component={PaginaInicial} />            
+          <Route path="/meuperfil" component={MeuPerfil} />                                   
+          <Route path="/historicos" component={Historicos} />                                   
+          <Route path="/agenda" component={Agenda} />   
+                  
+          <Route path="*" component={PageNotFound} />
+        </Switch>  
+      </Router>   
     </ThemeProvider>
-                                         
+  </UsuarioProvider>
+                                        
 );
 

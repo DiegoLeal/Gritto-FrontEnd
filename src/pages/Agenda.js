@@ -1,39 +1,15 @@
 import React from 'react';
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Box, Container } from "@material-ui/core";
-import Footer from 'components/Footer';
-
-const useStyles = makeStyles ({
-    Pagina: {
-        color: "tomato",
-        textAlign: "center",          
-    },
-    Container: {
-        background: "#fafafa",       
-    },
-    Page: {
-        marginTop: "2rem", 
-        fontSize: "5rem"      
-    }
-});
+import Navbar2 from 'components/Navbar2';
 
 const Agenda = () => {
-    const classes = useStyles();
     return (
         <>
-            <Container className={classes.Container}>
-                <Box className={classes.Pagina}  >            
-                    <Typography className={classes.Page}>
-                        <br></br>
-                        Em Progresso...   
-                        <br></br>                
-                        <br></br>                
-                    </Typography>            
-                </Box>
-            </Container>        
-            <Footer />
+        <Navbar2 />
+            <div style={{fontSize: "5rem", textAlign: "center", color: "tomato", marginTop: "12rem"}}>
+            Em Progresso...
+            </div>
         </>
-    )
+    );
 }
 
 export default Agenda;
