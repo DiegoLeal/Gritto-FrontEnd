@@ -1,5 +1,4 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Container,
@@ -11,11 +10,11 @@ import {
   FormControl,
   Button,
 } from '@material-ui/core';
-import Navbar2 from 'components/Navbar2';
 import Image from 'img/interior.jpg';
 import Cpf from 'utils/Cpf';
 import BasicDatePicker from 'utils/BasicDatePicker';
 import Footer from 'components/Footer';
+import Input from 'components/Input';
 
 const useStyles = makeStyles((theme) => ({
   form: {
@@ -81,13 +80,10 @@ export default function Formulario() {
           <div className={classes.form}>
             <Grid container spacing={3}>
               <Grid item md={4}>
-                <TextField
+                <Input
                   label="Nome "
                   name={'name'}
                   placeholder="Nome completo"
-                  margin="dense"
-                  size="medium"
-                  style={{ width: '13rem' }}
                   onChange={handleChange}
                 />
               </Grid>
