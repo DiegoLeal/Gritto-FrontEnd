@@ -35,10 +35,6 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-  appbar: {
-    background: "#7BB0FF", 
-    maxWidth: "100%"
-}
 }));
 
 const menuItens = [
@@ -102,63 +98,52 @@ export default function MenuAppBar() {
     )
   return (
         <div className={classes.root}>      
-            <AppBar position="static" className={classes.appbar}>
+            <AppBar position="static"style={{maxWidth:"100%", background: "#7BB0FF"}}>
                 <Toolbar>
-                    <IconButton 
-                        onClick={toggleSlider("left", true)} 
-                        edge="start" 
-                        className={classes.menuButton} 
-                        color="inherit" 
-                        aria-label="menu">
-                            <MenuIcon />
+                <IconButton onClick={toggleSlider("left", true)} edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+                        <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        <Link 
-                            className='logo' to='/' 
-                            style={{ 
-                                color: "white", 
-                                textDecoration: "none" 
-                                }}
-                        >
-                            GRITTO
-                        </Link>
-                    </Typography> 
-                    <MobilLeftMenuSlider
-                        anchor="left"
-                        open={state.left}
-                        onClose={toggleSlider("left", false)}
+                <Typography variant="h6" className={classes.title}>
+                    <Link className='logo' to='/' style={{ color: "white", textDecoration: "none" }}>
+                        GRITTO
+                    </Link>
+                </Typography> 
+                <MobilLeftMenuSlider
+                    anchor="left"
+                    open={state.left}
+                    onClose={toggleSlider("left", false)}
+                >
+                    {sideList("left")}
+                </MobilLeftMenuSlider>        
+                    <div>
+                    <IconButton
+                        aria-label="account of current user"
+                        aria-controls="menu-appbar"
+                        aria-haspopup="true"
+                        onClick={handleMenu}
+                        color="inherit"
                     >
-                        {sideList("left")}
-                    </MobilLeftMenuSlider>        
-                        <div>
-                        <IconButton
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleMenu}
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorEl}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={open}
-                            onClose={handleClose}
-                        >
-                            <MenuItem onClick={handleClose}>Minha Conta</MenuItem>
-                            <MenuItem onClick={handleClose}>Configurações</MenuItem>
-                        </Menu>
-                        </div>         
+                        <AccountCircle />
+                    </IconButton>
+                    <Menu
+                        id="menu-appbar"
+                        anchorEl={anchorEl}
+                        anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        keepMounted
+                        transformOrigin={{
+                        vertical: 'top',
+                        horizontal: 'right',
+                        }}
+                        open={open}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}>Perfil</MenuItem>
+                        <MenuItem onClick={handleClose}>Minha conta</MenuItem>
+                    </Menu>
+                    </div>         
                 </Toolbar>
             </AppBar>
         </div>

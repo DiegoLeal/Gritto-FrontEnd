@@ -1,41 +1,15 @@
 import React from 'react';
-import { makeStyles } from "@material-ui/core/styles";
-import { Typography, Box, Container } from "@material-ui/core";
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import Navbar2 from 'components/Navbar2';
 
-const useStyles = makeStyles ({
-    Pagina: {
-        color: "tomato",
-        textAlign: "center",          
-    },
-    Container: {
-        background: "#fafafa",       
-    },
-    Page: {
-        marginTop: "2rem", 
-        fontSize: "5rem"      
-    }
-});
-
-const Historicos = () => {
-    const classes = useStyles();
+const Historico = () => {
     return (
         <>
-            <Navbar />       
-            <Container className={classes.Container}>
-                <Box className={classes.Pagina}  >            
-                    <Typography className={classes.Page}>
-                        <br></br>
-                        Em Progresso...   
-                        <br></br>                
-                        <br></br>                
-                    </Typography>            
-                </Box>
-            </Container>        
-            <Footer />
+        <Navbar2 />
+            <div style={{fontSize: "5rem", textAlign: "center", color: "tomato", marginTop: "12rem"}}>
+                Em Progresso...
+            </div>
         </>
-    )
+    );
 }
 
-export default Historicos;
+export default Historico;

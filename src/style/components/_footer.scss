@@ -1,6 +1,6 @@
 .main-footer {
     flex-direction: row;
-     background: #d4d4d4;
+    background: #d4d4d4;    
 }   
 .container {
 	max-width: 960px;
@@ -8,18 +8,17 @@
 	display: flex;
 	flex-direction: row;
 }
-.col{
+.col {
     margin-top: 2rem;
     text-align: justify;
-    padding-left: 5.5rem;
-    
+    padding-left: 5.5rem;    
 }
-.col-sm{
+.col-sm {
     flex-direction: row;
     list-style: none;
     text-align: center;
 }
-.redes{  
+.redes {  
     flex-direction: row;
     text-align: center;
     margin-left: 1rem;
@@ -49,11 +48,10 @@
 .youTube :hover {    
     color:#ff0000;
 }
-
-.list-unstyled{
+.list-unstyled {
     height: 5rem;
 }
-p.col-sm{
+p.col-sm {
     padding: 1rem;
 }
 h4 {  
@@ -79,14 +77,14 @@ ul a:hover {
     color: tomato;
     text-decoration: none;
 }
-ul li{
+ul li {
     margin: 10px 0;
     height: 15px;
 }
-li i{
+li i {
     margin-right: 20px;
 }
-p{
+p {
     margin-bottom: 0;
     padding: 1rem ;
 }

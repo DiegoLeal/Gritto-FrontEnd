@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import '../style/App.css';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import MobilLeftMenuSlider from "@material-ui/core/Drawer";
@@ -8,7 +7,8 @@ import {
     Toolbar,
     ListItem,
     IconButton,
-    ListItemText,     
+    ListItemText,   
+    Divider,
     List,
     Typography,
     Box,      
@@ -23,7 +23,7 @@ import {
 } from "@material-ui/icons";
 
 // CSS STYLES
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
     menuSliderContainer: {
         width:250,
         background: "whitesmoke",
@@ -31,10 +31,6 @@ const useStyles = makeStyles(() => ({
     },
     listItem: {
         color: "black"
-    },
-    appbar: {
-        background: "#7BB0FF", 
-        maxWidth: "100%"
     }
 }));
 
@@ -78,6 +74,7 @@ const Navbar = () => {
         component="div" 
         onClick={toggleSlider(slider, false)}
         >            
+            <Divider />
             <List>
                 {menuItens.map((lisItem, key) => (
                     <ListItem button key={key} component={Link} link="true" to={lisItem.listPath} >
@@ -92,17 +89,17 @@ const Navbar = () => {
                 ))}
             </List>
         </Box>
-    )   
+    )
     return (
         <>
             <Box component="nav">
-                <AppBar className={classes.appbar}>
+                <AppBar style={{ background: "#7BB0FF", maxWidth: "100%" }}>
                     <Toolbar>
                         <IconButton onClick={toggleSlider("left", true)}>
                             <Menu style={{ color: "white" }} />
                         </IconButton>
                         <Typography variant="h5" >
-                            <Link className='logo' to='/' style={{ color: "white", textDecoration: "none"}}>
+                            <Link className='logo' to='/' style={{ color: "white", textDecoration: "none" }}>
                                 GRITTO
                             </Link>
                         </Typography>
