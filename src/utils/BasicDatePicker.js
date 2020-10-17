@@ -27,7 +27,7 @@ function BasicDatePicker() {
             autoOk
             clearable
             value={postUsuario.dataNascimento}
-            onChange={date => handleDateChange()}
+            onChange={date => handleDateChange(date)}
             format="dd/MM/yyyy"
             inputVariant="standard"
             style={{width: '13rem', marginTop: '15px'}}
