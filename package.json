@@ -16,6 +16,7 @@
     "axios": "^0.20.0",
     "date-fns": "^2.14.0",
     "dayjs": "^1.9.4",
+    "express": "^4.17.1",
     "hooks": "^0.3.2",
     "material-ui-address-input": "^0.4.0",
     "material-ui-thai-datepickers": "^1.1.7",
@@ -31,7 +32,7 @@
     "typed-js": "^0.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
