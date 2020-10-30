@@ -1,5 +1,4 @@
-import React from 'react';
-import Navbar2 from './Navbar2';
+import React, { Fragment } from 'react';
 import Header from './Header';
 import Particles from 'react-particles-js';
 import { makeStyles } from '@material-ui/core/styles'
@@ -10,8 +9,8 @@ const useStyles = makeStyles({
         opacity: "0.3"
     },
     cardContainer: {
-        maxWidth: 345, 
-        margin: "5rem auto"        
+        maxWidth: 345,
+        margin: "5rem auto"
     }
 });
 
@@ -20,24 +19,23 @@ const Home = () => {
 
     const classes = useStyles();
 
-    return (      
-        <>
-        <Navbar2 />
-        <Header />
+    return (
+        <Fragment>
+            <Header />
             <Particles
-            canvasClassName={classes.particlesCanva}
-                    params={{
-                        particles: {
-                            number: {
-                                value: 45,
-                                density: {
-                                    enable: true,
-                                    value_area: 900
-                                }
-                            },
-                            shape: {
-                                type: "circle",
-                                stroke: {  
+                canvasClassName={classes.particlesCanva}
+                params={{
+                    particles: {
+                        number: {
+                            value: 45,
+                            density: {
+                                enable: true,
+                                value_area: 900
+                            }
+                        },
+                        shape: {
+                            type: "circle",
+                            stroke: {
                                 width: 1,
                                 color: "white"
                             }
@@ -63,9 +61,9 @@ const Home = () => {
                             }
                         }
                     }
-                }} 
-            />           
-        </>      
+                }}
+            />
+        </Fragment>
     )
 }
 

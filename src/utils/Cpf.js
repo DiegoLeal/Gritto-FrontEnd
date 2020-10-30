@@ -47,7 +47,8 @@ const Cpf = () => {
                     placeholder="999.999.999-99"
                     name='cpf'
                     onChange={handlechange}                        
-                    style={{width: "13rem"}}                            
+                    style={{width: "13rem"}}   
+                    fullWidth                         
                 />
                 </Grid >             
             </>
