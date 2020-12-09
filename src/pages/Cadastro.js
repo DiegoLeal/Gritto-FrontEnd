@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {Container, Grid, Typography, TextField, Button} from '@material-ui/core'
 import NavBar2 from '../components/Navbar2';
 import Image from '../img/interior.jpg';
+import { Link } from 'react-router-dom';
 
 export default function Cadastro() {
     return(
@@ -44,7 +45,9 @@ export default function Cadastro() {
                                 />
                             </Grid>
                             <Grid item xm={4}>
-                                <Button variant="contained" color="primary" style={{width: '300px' ,color: 'white'}}>Cadastre-se</Button>
+                                <Link to="/cadastro">
+                                    <Button variant="contained" color="primary" style={{width: '300px' ,color: 'white'}}>Cadastre-se</Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </div>

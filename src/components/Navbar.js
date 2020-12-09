@@ -43,6 +43,11 @@ const menuItens = [
         listPath: "/"
     },
     {
+        listIcon: <Home/>,
+        listText: "Login",
+        listPath: "/login"
+    },
+    {
         listIcon: <AssignmentInd/>,
         listText: "Meu Perfil",
         listPath: "/meuperfil"

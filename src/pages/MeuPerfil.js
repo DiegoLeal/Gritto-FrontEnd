@@ -5,12 +5,13 @@ import '../style/MeuPerfil.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography, TextField, NativeSelect, InputLabel, FormControl, Button } from '@material-ui/core';
-import Navbar2 from '../components/Navbar2';
-import Image from '../img/interior.jpg';
-import Cpf from '../utils/Cpf';
-import BasicDatePicker from '../utils/BasicDatePicker';
-import Footer from '../components/Footer';
-import { UsuarioContext } from '../context/UsuarioContext';
+import Navbar2 from 'components/Navbar2';
+import Image from 'img/interior.jpg';
+import Cpf from 'utils/Cpf';
+import BasicDatePicker from 'utils/BasicDatePicker';
+import Footer from 'components/Footer';
+import { UsuarioContext } from 'context/UsuarioContext';
+import { AuthContext } from 'context/AuthContext';
 
 const useStyles = makeStyles((theme) => ({     
   form: {                        
@@ -33,6 +34,7 @@ export default function Formulario() {
 
     const [postUsuario, setPostUsuario] = useContext(UsuarioContext);
     const [post, setPost] = useState('');
+    const {token} = useContext(AuthContext);
     
     const handleChange = (event) => {
         event.preventDefault();
@@ -63,10 +65,12 @@ export default function Formulario() {
     const[ufs, setUfs] = useState([]);
 
     const apiGetRequest = () => {
-        const getRua = api.get('rua');
-        const getBairro = api.get('bairro');
-        const getCidade = api.get('cidade');
-        const getUf = api.get('uf');
+        api.defaults.headers.Authorization = `Bearer ${token.data}`;
+        
+        const getRua = api.get('ruas');
+        const getBairro = api.get('bairros');
+        const getCidade = api.get('cidades');
+        const getUf = api.get('ufs');
 
         axios.all([getRua, getBairro, getCidade, getUf])
         .then(
