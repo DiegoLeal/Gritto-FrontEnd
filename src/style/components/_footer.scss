@@ -1,0 +1,91 @@
+.main-footer {
+    flex-direction: row;
+    background: #d4d4d4;    
+}   
+.container {
+	max-width: 960px;
+	margin: 0px auto;
+	display: flex;
+	flex-direction: row;
+}
+.col {
+    margin-top: 2rem;
+    text-align: justify;
+    padding-left: 5.5rem;    
+}
+.col-sm {
+    flex-direction: row;
+    list-style: none;
+    text-align: center;
+}
+.redes {  
+    flex-direction: row;
+    text-align: center;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+.facebook {
+    flex-direction: row;
+    color: black;
+    margin-left: 1.5rem; 
+}
+.facebook :hover {    
+    color:#3B5998;
+}
+.twitter {
+    flex-direction: row;
+    color: black;
+    margin-left: 1.5rem; 
+}
+.twitter :hover {    
+    color:#54A4D6;
+}
+.youTube {
+    flex-direction: row;
+    color: black;
+    margin-left: 1.5rem; 
+}
+.youTube :hover {    
+    color:#ff0000;
+}
+.list-unstyled {
+    height: 5rem;
+}
+p.col-sm {
+    padding: 1rem;
+}
+h4 {  
+    margin: 1px 0;
+    padding-left: 2.5rem;
+    color: #000;
+    font-size: 20px;    
+    font-weight: lighter;   
+}
+ul {
+    list-style: none;
+    color: #000;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+ul a {
+    text-decoration: none;
+    outline: none;
+    color: #000;
+    transition: 0.3s;
+}
+ul a:hover {
+    color: tomato;
+    text-decoration: none;
+}
+ul li {
+    margin: 10px 0;
+    height: 15px;
+}
+li i {
+    margin-right: 20px;
+}
+p {
+    margin-bottom: 0;
+    padding: 1rem ;
+}
+

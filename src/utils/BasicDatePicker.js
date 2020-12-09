@@ -1,11 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, { useContext } from "react";
 import { Grid } from '@material-ui/core'
 import DateFnsUtils from '@date-io/date-fns';
 import {
   MuiPickersUtilsProvider,    
   KeyboardDatePicker,
 }  from '@material-ui/pickers';
-import {UsuarioContext} from '../context/UsuarioContext';
+import { UsuarioContext } from 'context/UsuarioContext';
 
 function BasicDatePicker() { 
     const [postUsuario, setPostUsuario] = useContext(UsuarioContext);
