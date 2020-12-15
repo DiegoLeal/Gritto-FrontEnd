@@ -4,7 +4,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import PaginaInicial  from 'components/index';
 import MeuPerfil from 'pages/MeuPerfil';
 import Historicos from 'pages/Historicos';
-import Agenda from 'pages/Agenda';
+import Agenda from '../components/Schedule';
 import PageNotFound from 'pages/PageNotFound';
 import { ThemeProvider } from '@material-ui/core';
 import Navbar from 'components/Navbar';
