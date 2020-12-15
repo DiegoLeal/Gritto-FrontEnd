@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PaginaInicial  from 'components/index';
 import MeuPerfil from 'pages/MeuPerfil';
-import Historicos from 'pages/Historicos';
 import Agenda from '../components/Schedule';
 import PageNotFound from 'pages/PageNotFound';
 import { ThemeProvider } from '@material-ui/core';
@@ -23,8 +22,7 @@ export default () => (
         <CssBaseline />
         <Switch>               
           <Route path="/" exact component={PaginaInicial} />            
-          <PrivateRoute path="/meuperfil" component={MeuPerfil} />                                   
-          <PrivateRoute path="/historicos" component={Historicos} />                                   
+          <PrivateRoute path="/meuperfil" component={MeuPerfil} />                                  
           <PrivateRoute path="/agenda" component={Agenda} />
           <Route path="/cadastro" component={Cadastro} />    
           <Route path="/login" component={Login} /> 

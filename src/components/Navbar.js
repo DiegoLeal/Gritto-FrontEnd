@@ -17,8 +17,7 @@ import {
 import {
     Menu,
     AssignmentInd,
-    Home,
-    Apps,
+    Home,   
     ContactMail   
 } from "@material-ui/icons";
 
@@ -49,12 +48,7 @@ const menuItens = [
         listIcon: <AssignmentInd/>,
         listText: "Meu Perfil",
         listPath: "/meuperfil"
-    },
-    {
-        listIcon: <Apps/>,
-        listText: "Históricos",
-        listPath: "/historicos"
-    },
+    },    
     {
         listIcon: <ContactMail/>,
         listText: "Agenda",

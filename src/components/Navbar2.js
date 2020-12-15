@@ -20,8 +20,7 @@ import {
 import {
     AssignmentInd,    
     AccountCircle,
-    Home,
-    Apps    
+    Home      
 } from "@material-ui/icons";
 
 
@@ -47,12 +46,7 @@ const menuItens = [
         listIcon: <AssignmentInd />,
         listText: "Meu Perfil",
         listPath: "/meuperfil"
-    },
-    {
-        listIcon: <Apps />,
-        listText: "Históricos",
-        listPath: "/historicos"
-    },
+    },    
     {
         listIcon: <AccessTimeIcon />,
         listText: "Agenda",
