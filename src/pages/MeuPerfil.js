@@ -1,7 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
-import api from '../utils/api';
+import api from 'utils/api';
 import axios from 'axios';
-import '../style/MeuPerfil.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container, Grid, Typography, TextField, NativeSelect, InputLabel, FormControl, Button } from '@material-ui/core';

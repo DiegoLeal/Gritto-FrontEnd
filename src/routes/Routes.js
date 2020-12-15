@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import '../style/App.css';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import PaginaInicial  from '../components/index';
 import MeuPerfil from '../pages/MeuPerfil';
