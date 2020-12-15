@@ -11,6 +11,7 @@ import BasicDatePicker from 'utils/BasicDatePicker';
 import Footer from 'components/Footer';
 import { UsuarioContext } from 'context/UsuarioContext';
 import { AuthContext } from 'context/AuthContext';
+import Services from 'components/Services';
 
 const useStyles = makeStyles((theme) => ({     
   form: {                        
@@ -190,14 +191,7 @@ export default function Formulario() {
                                 />
                             </Grid>
                             <Grid item md={4}>
-                                <TextField
-                                    label="Confirmar e-mail"
-                                    placeholder="Confirmar e-mail"
-                                    type="email"
-                                    margin="dense"
-                                    size="medium"
-                                    style={{ width: "13rem" }}
-                                />
+                                <Services />
                             </Grid>                                         
                         </Grid >              
                     </div>
