@@ -4,6 +4,7 @@ export const UsuarioContext = createContext();
 
 export const UsuarioProvider = props => {
     const [postUsuario, setPostUsuario] = useState(new Date(),{
+        id: '',
         dataNascimento: '',
         nome: '',
         rg: '',
@@ -11,9 +12,7 @@ export const UsuarioProvider = props => {
         telefone: '',
         senha: '',
         email: '',
-        sexo: '',
-        catServico: ''
-
+        sexo: ''
     });
     return (
         <UsuarioContext.Provider value={[postUsuario, setPostUsuario]}>

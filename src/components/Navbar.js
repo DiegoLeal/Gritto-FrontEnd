@@ -21,7 +21,8 @@ import {
     AssignmentInd,
     Home,
     Apps,
-    ContactMail   
+    ContactMail,
+    Lock
 } from "@material-ui/icons";
 
 // CSS STYLES
@@ -43,14 +44,14 @@ const menuItens = [
         listPath: "/"
     },
     {
-        listIcon: <Home/>,
+        listIcon: <Lock/>,
         listText: "Login",
         listPath: "/login"
     },
     {
         listIcon: <AssignmentInd/>,
         listText: "Meu Perfil",
-        listPath: "/meuperfil"
+        listPath: "/meuperfil"        
     },
     {
         listIcon: <Apps/>,

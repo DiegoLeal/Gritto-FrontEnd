@@ -20,6 +20,7 @@ export default function Login() {
             setToken({data});
             history.push('/meuperfil');
         })
+
     }
 
     function onCredentialsChange(event) {
